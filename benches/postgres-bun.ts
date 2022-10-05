@@ -14,18 +14,18 @@ function execSync(sql: string) {
   const rows = [];
   const rowCount = libpq.PQntuples(res);
   const colCount = libpq.PQnfields(res);
-  // const colNames = [];
-  // for (let i = 0; i < colCount; i++) {
-  //   colNames.push(libpq.PQfname(res, i));
-  // }
-  // for (let i = 0; i < rowCount; i++) {
-  //   const row = {};
-  //   for (let j = 0; j < colCount; j++) {
-  //     const value = libpq.PQgetvalue(res, i, j);
-  //     row[colNames[j]] = value;
-  //   }
-  //   rows.push(row);
-  // }
+  const colNames = [];
+  for (let i = 0; i < colCount; i++) {
+    colNames.push(libpq.PQfname(res, i));
+  }
+  for (let i = 0; i < rowCount; i++) {
+    const row = {};
+    for (let j = 0; j < colCount; j++) {
+      const value = libpq.PQgetvalue(res, i, j);
+      row[colNames[j]] = value;
+    }
+    rows.push(row);
+  }
 
   return rows;
 }
