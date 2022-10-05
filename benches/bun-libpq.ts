@@ -1,14 +1,10 @@
 import { libpq } from "../src/lib";
 import { run, bench } from "mitata";
+import { sqls } from "./sqls.mjs";
 
 const utf8e = new TextEncoder();
 
 const conn = libpq.PQconnectdb(utf8e.encode("dbname=postgres"));
-
-const sqls = [
-  "select 1",
-  // `select i, i as a from generate_series(1, 100000) s(i)`,
-];
 
 for (const sql of sqls) {
   const encoded = utf8e.encode(sql);

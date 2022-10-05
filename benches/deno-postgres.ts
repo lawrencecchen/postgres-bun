@@ -1,5 +1,6 @@
 import { Client } from "https://deno.land/x/postgres@v0.16.1/mod.ts";
 import { run, bench } from "https://esm.sh/mitata";
+import { sqls } from "./sqls.mjs";
 
 const client = new Client({
   host: "localhost",
@@ -9,9 +10,12 @@ const client = new Client({
 });
 await client.connect();
 
-bench("deno-postgres `select 1`", async () => {
-  await client.queryArray(`select 1`);
-});
+for (const sql of sqls) {
+  bench(`deno-postgres \`${sql}\``, async () => {
+    // await client.queryArray(sql);
+    await client.queryObject(sql);
+  });
+}
 
 await run({ percentiles: false });
 

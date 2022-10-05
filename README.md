@@ -13,7 +13,7 @@ only tested on my mac for now.
 
 not sure yet.
 
-![bun todos](media/libpq-socket-todos.png)
+<!-- ![bun todos](media/libpq-socket-todos.png) -->
 
 https://github.com/oven-sh/bun/issues/159
 

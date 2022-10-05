@@ -1,16 +1,15 @@
 import postgres from "postgres";
 import { run, bench } from "mitata";
+import { sqls } from "./sqls.mjs";
 
-const sql = postgres({ host: "localhost", port: 5432, database: "postgres" });
+const pg = postgres({ host: "localhost", port: 5432, database: "postgres" });
 
-bench("postgres-js `select 1`", async () => {
-  await sql`select 1`;
-});
-
-// bench("postgres-js `generate_series(1, 100000)`", async () => {
-//   await sql`select i, i as a from generate_series(1, 100000) s(i)`;
-// });
+for (const _sql of sqls) {
+  bench(`postgres-js \`${_sql}\``, async () => {
+    await pg.unsafe(_sql);
+  });
+}
 
 await run({ percentiles: false });
 
-await sql.end();
+await pg.end();

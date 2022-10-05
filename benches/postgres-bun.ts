@@ -1,12 +1,13 @@
 import { libpq } from "../src/lib";
 import { run, bench } from "mitata";
+import { sqls } from "./sqls.mjs";
 
 const utf8e = new TextEncoder();
 
 const conn = libpq.PQconnectdb(utf8e.encode("dbname=postgres"));
 
-function execSync(sql: string) {
-  const res = libpq.PQexec(conn, utf8e.encode(sql));
+function execSync(sql: Uint8Array) {
+  const res = libpq.PQexec(conn, sql);
   const status = libpq.PQresultStatus(res);
   if (status !== 2) {
     throw new Error("error");
@@ -30,13 +31,12 @@ function execSync(sql: string) {
   return rows;
 }
 
-bench("postgres-bun `select 1`", () => {
-  execSync("select 1;");
-});
-
-// bench("postgres-bun `generate_series(1, 100000)`", async () => {
-//   execSync(`select i, i as a from generate_series(1, 100000) s(i)`);
-// });
+for (const sql of sqls) {
+  const encoded = utf8e.encode(sql);
+  bench(`postgres-bun \`${sql}\``, async () => {
+    execSync(encoded);
+  });
+}
 
 await run({ percentiles: false });
 
