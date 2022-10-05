@@ -3,6 +3,8 @@
 
 <br />
 
+only tested on my mac for now.
+
 ### Install
 
 `bun add postgres-bun`
