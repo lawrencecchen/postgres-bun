@@ -532,37 +532,45 @@ export const _libpq = dlopen(path, {
 
 export const libpq = _libpq.symbols;
 
-// export
-function main() {
-  // const connArray = new Uint8Array("dbname=postgres");
-  const enc = new TextEncoder();
-  const connArray = enc.encode("dbname=postgres");
-  const conn = _libpq.symbols.PQconnectdb(connArray);
-  console.log("conn:", conn);
-  const status = _libpq.symbols.PQstatus(conn);
-  console.log("status:", status);
-  const db = _libpq.symbols.PQdb(conn);
-  console.log("db:", db);
-  const user = _libpq.symbols.PQuser(conn);
-  console.log("user:", user);
-  const protocolVersion = _libpq.symbols.PQprotocolVersion(conn);
-  console.log("protocol version:", protocolVersion);
-  const serverVersion = _libpq.symbols.PQserverVersion(conn);
-  console.log("server version:", serverVersion);
-  const res = _libpq.symbols.PQexec(conn, enc.encode("select 12311"));
-  console.log("res:", res);
-  const nFields = _libpq.symbols.PQnfields(res);
-  console.log("nFields:", nFields);
-  for (let i = 0; i < nFields; i++) {
-    const fname = _libpq.symbols.PQfname(res, i);
-    console.log(fname);
-  }
-  for (let i = 0; i < _libpq.symbols.PQntuples(res); i++) {
-    for (let j = 0; j < nFields; j++) {
-      const value = _libpq.symbols.PQgetvalue(res, i, j);
-      console.log(value);
-    }
-  }
-}
+export const libpqConstants = {
+  CONNECTION_OK: 0,
+  CONNECTION_BAD: 1,
+  PGRES_EMPTY_QUERY: 0,
+  PGRES_COMMAND_OK: 1,
+  PGRES_TUPLES_OK: 2,
+};
+// { ..._libpq.symbols, CONNECTION_OK: 0, CONNECTION_BAD: 1 };
 
-main();
+// export
+// function main() {
+//   const enc = new TextEncoder();
+//   const connArray = enc.encode("dbname=postgres");
+//   const conn = _libpq.symbols.PQconnectdb(connArray);
+//   console.log("conn:", conn);
+//   const status = _libpq.symbols.PQstatus(conn);
+//   console.log("status:", status);
+//   const db = _libpq.symbols.PQdb(conn);
+//   console.log("db:", db);
+//   const user = _libpq.symbols.PQuser(conn);
+//   console.log("user:", user);
+//   const protocolVersion = _libpq.symbols.PQprotocolVersion(conn);
+//   console.log("protocol version:", protocolVersion);
+//   const serverVersion = _libpq.symbols.PQserverVersion(conn);
+//   console.log("server version:", serverVersion);
+//   const res = _libpq.symbols.PQexec(conn, enc.encode("select 12311"));
+//   console.log("res:", res);
+//   const nFields = _libpq.symbols.PQnfields(res);
+//   console.log("nFields:", nFields);
+//   for (let i = 0; i < nFields; i++) {
+//     const fname = _libpq.symbols.PQfname(res, i);
+//     console.log(fname);
+//   }
+//   for (let i = 0; i < _libpq.symbols.PQntuples(res); i++) {
+//     for (let j = 0; j < nFields; j++) {
+//       const value = _libpq.symbols.PQgetvalue(res, i, j);
+//       console.log(value);
+//     }
+//   }
+// }
+
+// main();

@@ -1,0 +1,17 @@
+{
+  "name": "pg-native",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Lawrence Chen",
+  "license": "ISC",
+  "dependencies": {
+    "libpq": "^1.8.12",
+    "mitata": "^0.1.6",
+    "pg-native": "^3.0.1"
+  }
+}

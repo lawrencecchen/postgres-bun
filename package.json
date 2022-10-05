@@ -12,7 +12,16 @@
     "src/*"
   ],
   "type": "module",
+  "scripts": {
+    "bench": "bash ./benches/run.sh"
+  },
   "devDependencies": {
-    "bun-types": "^0.1.0"
+    "bun-types": "^0.1.0",
+    "mitata": "^0.1.6",
+    "pg": "^8.8.0",
+    "postgres": "^3.3.1"
+  },
+  "dependencies": {
+    "kysely": "^0.22.0"
   }
 }
