@@ -5,11 +5,19 @@
 
 only tested on my mac for now.
 
+The shared library is currently hard coded:
+
+```ts
+const path = `/usr/local/pgsql/lib/libpq.${suffix}`;
+```
+
 ### Install
 
 `bun add postgres-bun`
 
 ### Benchmark
+
+Make sure you have postgres installed.
 
 ```bash
 bun install
