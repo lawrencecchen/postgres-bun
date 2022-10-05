@@ -7,6 +7,18 @@
 
 `bun add postgres-bun`
 
+### is this the fastest??
+
+not sure yet.
+
+![bun todos](media/libpq-socket-todos.png)
+
+https://github.com/oven-sh/bun/issues/159
+
+getting started with the latter, will hopefully get to the former so we can benchmark.
+
+![jarred on discord](media/libpq-vs-socket.png)
+
 ### Credits
 
 - https://github.com/duckdb/duckdb
