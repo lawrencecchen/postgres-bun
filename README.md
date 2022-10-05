@@ -1,15 +1,8 @@
-# pgbun
+<h1 align=center>postgres-bun</h1>
+<div align=center>fast <a href=https://duckdb.org>postgres</a> bindings for bun runtime</div>
 
-https://github.com/oven-sh/bun/issues/159#:~:text=Explore%20a%20libpq%2Dbased%20implementation
+<br />
 
-## libpq
+### Install
 
-https://www.postgresql.org/docs/current/libpq-build.html
-
-```bash
-pg_config --includedir
-cc -c -I/opt/homebrew/include/postgresql@14 play.c
-
-pg_config --libdir
-cc -o play play.o -L/opt/homebrew/lib/postgresql@14 -lpq
-```
+`bun add postgres-bun`

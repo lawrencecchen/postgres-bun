@@ -1,6 +1,16 @@
 {
-  "name": "pgbun",
-  "module": "index.ts",
+  "name": "postgres-bun",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "fast postgres bindings for bun runtime (ffi libpq)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lawrencecchen/postgres-bun.git"
+  },
+  "module": "src/index.ts",
+  "files": [
+    "src/*"
+  ],
   "type": "module",
   "devDependencies": {
     "bun-types": "^0.1.0"
