@@ -9,7 +9,7 @@ await client.connect();
 
 for (const sql of sqls) {
   bench(`node-postgres \`${sql}\``, async () => {
-    await client.query(`select 1`);
+    await client.query(sql);
   });
 }
 
