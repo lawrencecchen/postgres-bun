@@ -1,5 +1,5 @@
 <h1 align=center>postgres-bun</h1>
-<div align=center>fast <a href=https://www.postgresql.org/>postgres</a> bindings for bun runtime</div>
+<div align=center>fast <a href=https://www.postgresql.org/>postgres</a> bindings for bun runtime (libpq ffi)</div>
 
 <br />
 
