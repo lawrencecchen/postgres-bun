@@ -9,6 +9,14 @@ only tested on my mac for now.
 
 `bun add postgres-bun`
 
+### Benchmark
+
+```bash
+bun install
+cd ./benches/node-libpq && npm install && cd ../..
+bun bench
+```
+
 ### is this the fastest??
 
 not sure yet.
